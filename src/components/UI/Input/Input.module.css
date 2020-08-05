@@ -1,0 +1,53 @@
+.Input {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    padding: 15px;
+}
+
+.Label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    margin-bottom: 8px;
+    z-index: -1;
+    transition: all .3s ease;
+}
+
+.InputElement {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    font: inherit;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
+
+.InputElement:focus {
+    border-bottom: 1px solid #40A4C8;
+    outline: none;
+
+}
+
+.InputElement:focus::placeholder {
+    transform: translateY(-.8em);
+    transition: all .3s ease;
+    font-size: .9rem;
+    color: #40A4C8;
+
+}
+
+.Invalid {
+    background-color: #ffe6e6;
+    border-bottom: 1px solid red;
+}
+
+.Invalid:focus::placeholder {
+    color: red;
+}

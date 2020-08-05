@@ -34,7 +34,7 @@ class BurgerBuilder extends Component {
                     ingredients: response.data
                 })
             })
-            .catch(error=>{
+            .catch(error => {
                 this.setState({error: true})
             })
     }
@@ -61,12 +61,11 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        console.log(this.props)
         let queryParam = []
         for (let item in this.state.ingredients) {
             queryParam.push(encodeURIComponent(item) + "=" + encodeURIComponent(this.state.ingredients[item]))
         }
-        queryParam.push('price='+ this.state.totalPrice)
+        queryParam.push('price=' + this.state.totalPrice)
         const queryString = queryParam.join('&')
         this.props.history.push({
             pathname: '/checkout',
@@ -80,39 +79,30 @@ class BurgerBuilder extends Component {
         const updateIngredients = {
             ...this.state.ingredients
         }
-
         updateIngredients[type] = updateCount;
-
         const priceAddition = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
         const updatePrice = oldPrice + priceAddition
-
         this.setState({
             ingredients: updateIngredients,
             totalPrice: updatePrice
         })
-
         this.updatePurchaseState(updateIngredients);
     }
 
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         let updateCount = oldCount - 1;
-
         if (oldCount <= 0) {
             return;
         }
-
         const updateIngredients = {
             ...this.state.ingredients
         }
-
         updateIngredients[type] = updateCount;
-
         const priceDeduction = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
         const updatePrice = oldPrice - priceDeduction
-
         this.setState({
             ingredients: updateIngredients,
             totalPrice: updatePrice
@@ -124,14 +114,11 @@ class BurgerBuilder extends Component {
         const disabledInfo = {
             ...this.state.ingredients
         }
-
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
-
         let orderSummary = null;
         let myBurger = this.state.error ? <p>Ingredients can't be loaded</p> : <Spinner/>;
-
         if (this.state.ingredients) {
             myBurger = (
                 <Aux>
@@ -151,10 +138,7 @@ class BurgerBuilder extends Component {
                 purchaseContinued={this.purchaseContinueHandler}
                 price={this.state.totalPrice}/>
         }
-        if (this.state.loading) {
-            orderSummary = <Spinner/>
-        }
-
+        if (this.state.loading) {orderSummary = <Spinner/>}
         return (
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
