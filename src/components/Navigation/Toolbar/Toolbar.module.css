@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703B09;
+    /*background-color: #703B09;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,7 +18,7 @@
 }
 
 .Logo {
-    height: 80%;
+    height: 100%;
 }
 
 @media (max-width: 499px) {

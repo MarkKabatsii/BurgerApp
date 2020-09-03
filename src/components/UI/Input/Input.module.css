@@ -2,6 +2,8 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.7);;
 }
 
 .Label {
@@ -12,18 +14,19 @@
 
 .InputElement {
     outline: none;
-    border: 1px solid #ccc;
-    background-color: white;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     font: inherit;
     padding: 6px 10px;
     display: block;
     width: 100%;
     box-sizing: border-box;
+    background-color: transparent;
+    color: white;
 }
 
 .InputElement:focus {
     outline: none;
-    background-color: #ccc;
+    color: white;
 }
 
 .Invalid {
